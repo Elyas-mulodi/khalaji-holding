@@ -7,6 +7,7 @@ import authRouter from "./Module/Auth/Auth.js";
 import serviceRouter from "./Module/Category/Category.js";
 import projectRouter from "./Module/Projects/Project.js";
 import searchRouter from "./Module/Search/Search.js";
+import sliderRouter from "./Module/Slider/Slider.js"
 
 const app = express();
 
@@ -18,9 +19,11 @@ app.use(morgan("dev"));
 app.use(cors());
 
 app.use("/api/auth", authRouter);
-app.use("/api/services", serviceRouter);
+app.use("/api/categories", serviceRouter);
 app.use("/api/projects", projectRouter);
 app.use("/api/search",searchRouter);
+app.use("/api/slider",sliderRouter)
+
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 

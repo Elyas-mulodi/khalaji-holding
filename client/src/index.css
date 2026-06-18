@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
+
+:root {
+  --primary: #E8956D;
+  --navy: #1B2A4A;
+  --light: #F8F6F3;
+  --white: #FFFFFF;
+  --gray: #6B7280;
+  --border: #E5DDD5;
+}
+
+* {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--navy);
+  direction: rtl;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--light); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }

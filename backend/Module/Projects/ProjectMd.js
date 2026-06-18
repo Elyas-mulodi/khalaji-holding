@@ -24,10 +24,14 @@ const projectSchema = new mongoose.Schema(
       type: Number,
       default: null,
     },
-    image: {
-      type: [String],
-      default: [],
+    slug: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+      lowercase: true,
     },
+    images: [String],
     catalogFile: {
       type: String,
       default: null,
@@ -40,7 +44,7 @@ const projectSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
-    inOnging: {
+    ongoing: {
       type: Boolean,
       default: false,
     },
@@ -70,6 +74,7 @@ const projectSchema = new mongoose.Schema(
     ],
     subCategory: {
       type: mongoose.Schema.Types.ObjectId,
+      ref: "SubCategory",
       default: null,
     },
   },
@@ -78,6 +83,7 @@ const projectSchema = new mongoose.Schema(
   },
 );
 
-const Project = mongoose.model("Project", projectSchema);
+const Project =
+  mongoose.models.Project || mongoose.model("Project", projectSchema);
 
 export default Project;

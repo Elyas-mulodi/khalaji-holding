@@ -134,7 +134,6 @@ export const createCategory = async (req, res) => {
       name,
       slug,
       description,
-      longDescription,
       images,
       order: order || 0,
       subCategories: subCategories ? JSON.parse(subCategories) : [],

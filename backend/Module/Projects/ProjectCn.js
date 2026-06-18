@@ -1,4 +1,4 @@
-import Project from "./projectsMd.js";
+import Project from "./projectMd.js";
 import fs from "fs";
 import path from "path";
 import { __dirname } from "../../app.js";
@@ -16,8 +16,8 @@ export const getProjects = async (req, res) => {
       filter.category = req.query.category;
     }
 
-    if (req.query.featured !== undefined) {
-      filter.featured = req.query.featured === "true";
+    if (req.query.features !== undefined) {
+      filter.features = req.query.features === "true";
     }
 
     if (req.query.subCategory) {
@@ -63,7 +63,9 @@ export const getProjects = async (req, res) => {
 // Get One
 export const getProject = async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id)
+    const project = await Project.findOne({
+      slug: req.params.slug,
+    })
       .populate("category", "name slug description")
       .populate("relatedProjects", "title images category");
 
@@ -87,9 +89,14 @@ export const createProject = async (req, res) => {
       description,
       location,
       category,
-      featured,
+      features,
       ongoing,
-      images,
+      yearBuilt,
+      progress,
+      completedAt,
+      order,
+      slug,
+      relatedProjects,
       catalogTitle,
       catalogDescription,
     } = req.body;
@@ -111,12 +118,13 @@ export const createProject = async (req, res) => {
       catalogTitle,
       catalogDescription,
       catalogFile,
+      slug,
       images,
       relatedProjects: relatedProjects ? JSON.parse(relatedProjects) : [],
-      isOngoing: isOngoing === "true",
+      ongoing: ongoing === "true",
       progress: progress || 0,
       completedAt: completedAt || null,
-      featured: featured === "true",
+      features: features === "true",
       order: order || 0,
     });
     res.status(201).json({
@@ -150,24 +158,24 @@ export const updateProject = async (req, res) => {
       updateData.images = [...project.images, ...newImages];
     }
 
-    if (req.files?.catalog) {
+    if (req.files?.catalogFile) {
       if (project.catalogFile) {
         const fullPath = path.join(__dirname, project.catalogFile);
         if (fs.existsSync(fullPath)) fs.unlinkSync(fullPath);
       }
-      updateData.catalogFile = req.files.catalog[0].path.replace(/\\/g, "/");
+      updateData.catalogFile = req.files.catalogFile[0].path.replace(/\\/g, "/");
     }
 
     if (updateData.relatedProjects) {
       updateData.relatedProjects = JSON.parse(updateData.relatedProjects);
     }
 
-    if (updateData.isOngoing !== undefined) {
-      updateData.isOngoing = updateData.isOngoing === "true";
+    if (updateData.ongoing !== undefined) {
+      updateData.ongoing = updateData.ongoing === "true";
     }
 
-    if (updateData.featured !== undefined) {
-      updateData.featured = updateData.featured === "true";
+    if (updateData.features !== undefined) {
+      updateData.features = updateData.features === "true";
     }
 
     const updated = await Project.findByIdAndUpdate(req.params.id, updateData, {

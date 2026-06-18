@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import Admin from "../Module/Auth/AuthMd.js";
 
-export const protect = (req, res, next) => {
+export const protect = async(req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
 

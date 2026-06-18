@@ -1,9 +1,7 @@
 import express from "express";
 
-import { protect } from "../../middleware/authMiddleware.js";
-import {
-    uploadMultipleImages,
-} from "../../middleware/upload.js";
+import { protect } from "../../Middleware/authMiddleware.js";
+import { uploadMultipleImages } from "../../middleware/upload.js";
 import {
   addSubCategory,
   createCategory,
@@ -21,8 +19,8 @@ const router = express.Router();
 
 // دسته‌بندی‌ها
 router.get("/", getCategories);
-router.get("/:slug", getCategory);
 router.get("/:slug/projects", getCategoryProjects);
+router.get("/:slug", getCategory);
 router.post("/", protect, uploadMultipleImages, createCategory);
 router.put("/:id", protect, uploadMultipleImages, updateCategory);
 router.delete("/:id", protect, deleteCategory);

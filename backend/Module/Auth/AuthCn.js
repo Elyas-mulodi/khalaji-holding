@@ -1,11 +1,18 @@
 import jwt from "jsonwebtoken";
-import Admin from "./AuthMd";
+import Admin from "./AuthMd.js";
 
 // Generate JWT
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
+const generateToken = (admin) => {
+  return jwt.sign(
+    {
+      id: admin._id,
+      role: admin.role,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "30d",
+    },
+  );
 };
 
 // Login
@@ -73,7 +80,7 @@ export const getMe = async (req, res) => {
 // admin seed
 export const seedAdmin = async (req, res) => {
   try {
-    const existing = await Admin.findOne({ username: "khalaji-admin" });
+    const existing = await Admin.findOne({ username: "khalaji" });
     if (existing) {
       return res.status(400).json({
         success: false,

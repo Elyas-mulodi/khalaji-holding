@@ -1,6 +1,6 @@
 import express from "express";
 import { login, getMe, seedAdmin } from "./AuthCn.js";
-import { protect } from "../../middleware/authMiddleware.js";
+import { protect } from "../../Middleware/authMiddleware.js";
 
 const router = express.Router();
 

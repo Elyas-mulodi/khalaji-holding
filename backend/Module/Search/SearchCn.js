@@ -1,5 +1,5 @@
-import Project from "../projects/projectsModel.js";
-import Category from "../categories/categoriesModel.js";
+import Project from "../Projects/ProjectMd.js";
+import Category from "../Category/CategoryMd.js";
 
 // ─────────────────────────────────────────
 // @desc    سرچ روی پروژه‌ها و دسته‌بندی‌ها

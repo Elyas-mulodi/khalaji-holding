@@ -49,16 +49,18 @@ export const getSlider = async (req, res) => {
 
 export const createSlider = async (req, res) => {
   try {
+    console.log("=== DEBUG ===");
+    console.log("req.file:", req.file);
+    console.log("req.body:", req.body);
+    console.log("=============");
     const { title, description, section, isActive } = req.body;
 
-    const image = req.files?.image
-      ? req.files.image[0].path.replace(/\\/g, "/")
-      : null;
+    const image = req.file ? req.file.path.replace(/\\/g, "/") : null;
 
     if (!image) {
       return res.status(400).json({
         success: false,
-        message: "تصویر اسلایدر الزامی است",
+        message: "تصویر وجود ندارد",
       });
     }
 
@@ -107,14 +109,10 @@ export const updateSlider = async (req, res) => {
       updateData.isActive = updateData.isActive === "true";
     }
 
-    const updated = await Slider.findByIdAndUpdate(
-      req.params.id,
-      updateData,
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const updated = await Slider.findByIdAndUpdate(req.params.id, updateData, {
+      new: true,
+      runValidators: true,
+    });
 
     res.status(200).json({
       success: true,

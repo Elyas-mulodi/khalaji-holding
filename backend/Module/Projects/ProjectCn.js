@@ -101,6 +101,19 @@ export const createProject = async (req, res) => {
       catalogDescription,
     } = req.body;
 
+    let relatedProjectsParsed = [];
+
+    if (req.body.relatedProjects) {
+      try {
+        relatedProjectsParsed =
+          typeof req.body.relatedProjects === "string"
+            ? JSON.parse(req.body.relatedProjects)
+            : req.body.relatedProjects;
+      } catch (e) {
+        relatedProjectsParsed = [];
+      }
+    }
+
     const images = req.files?.images
       ? req.files.images.map((file) => file.path.replace(/\\/g, "/"))
       : [];
@@ -120,7 +133,7 @@ export const createProject = async (req, res) => {
       catalogFile,
       slug,
       images,
-      relatedProjects: relatedProjects ? JSON.parse(relatedProjects) : [],
+      relatedProjects: relatedProjectsParsed,
       ongoing: ongoing === "true",
       progress: progress || 0,
       completedAt: completedAt || null,
@@ -163,7 +176,10 @@ export const updateProject = async (req, res) => {
         const fullPath = path.join(__dirname, project.catalogFile);
         if (fs.existsSync(fullPath)) fs.unlinkSync(fullPath);
       }
-      updateData.catalogFile = req.files.catalogFile[0].path.replace(/\\/g, "/");
+      updateData.catalogFile = req.files.catalogFile[0].path.replace(
+        /\\/g,
+        "/",
+      );
     }
 
     if (updateData.relatedProjects) {

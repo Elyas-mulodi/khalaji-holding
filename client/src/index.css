@@ -19,7 +19,10 @@ body {
   color: var(--navy);
   direction: rtl;
 }
-
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--light); }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }

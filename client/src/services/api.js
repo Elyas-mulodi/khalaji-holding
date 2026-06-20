@@ -6,12 +6,12 @@ const api = axios.create({
 
 // Slider
 export const getSliders = (section) =>
-  api.get(`/slider${section ? `section=${section}` : ""}`);
+  api.get(`/slider${section ? `?section=${section}` : ""}`);
 
 // Category
 export const getCategories = () => api.get("/categories");
 
-export const getCategory = (slug) => api.get(`categories/${slug}`);
+export const getCategory = (slug) => api.get(`/categories/${slug}`);
 
 export const getCategoryProjects = (slug, params) =>
   api.get(`/categories/${slug}/projects`, { params });
@@ -21,4 +21,4 @@ export const getProjects = (params) => api.get("/projects", { params });
 export const getProject = (slug) => api.get(`/projects/${slug}`);
 
 // Search
-export const search = (q) => api.get(`search?q=${q}`);
+export const search = (q) => api.get(`/search?q=${q}`);

@@ -1,7 +1,7 @@
 import express from "express";
 import { createSlider, deleteSlider, getSlider, getSliders, updateSlider } from "./SliderCn.js";
 import { protect } from "../../Middleware/authMiddleware.js";
-import { uploadSingleImage } from "../../middleware/upload.js";
+import { uploadSingleImage } from "../../Middleware/upload.js";
 
 const router = express.Router();
 

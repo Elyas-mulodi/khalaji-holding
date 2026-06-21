@@ -63,11 +63,16 @@ export const getProjects = async (req, res) => {
 // Get One
 export const getProject = async (req, res) => {
   try {
-    const project = await Project.findOne({
-      slug: req.params.slug,
-    })
+    const project = await Project.findOne({ slug: req.params.slug })
       .populate("category", "name slug description")
-      .populate("relatedProjects", "title images category");
+      .populate({
+        path: "relatedProjects",
+        select: "title images slug category",
+        populate: {
+          path: "category",
+          select: "name slug",
+        },
+      });
 
     if (!project) {
       return res.status(404).json({
@@ -75,7 +80,13 @@ export const getProject = async (req, res) => {
         message: "پروژه یافت نشد",
       });
     }
-    res.status(200).json({ success: true, data: project });
+
+    console.log("RELATED:", project.relatedProjects);
+
+    res.status(200).json({
+      success: true,
+      data: project,
+    });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

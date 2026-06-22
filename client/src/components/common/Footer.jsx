@@ -68,14 +68,6 @@ export default function Footer() {
                   درباره ما
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-primary transition-colors"
-                >
-                  تماس با ما
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -85,11 +77,12 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-white/60">
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-primary shrink-0" />
-                <span dir="ltr">021-XXXXXXXX</span>
+                <span dir="ltr">0915-356-4421</span>
+                <span dir="ltr">0936-836-4316</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-primary shrink-0" />
-                <span>info@khalaji.ir</span>
+                <span></span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-primary shrink-0 mt-0.5" />
@@ -117,9 +110,9 @@ export default function Footer() {
         {/* خط جداکننده */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs">
-            © {new Date().getFullYear()} خلجی هولدینگ. تمامی حقوق محفوظ است. <br />
+            © {new Date().getFullYear()} خلجی هولدینگ. تمامی حقوق محفوظ است.{" "}
+            <br />
             Creator : Elyas Mulodi
-            
           </p>
         </div>
       </div>

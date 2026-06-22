@@ -9,9 +9,8 @@ const stats = [
 export default function About() {
   return (
     <div>
-      {/* ───────── Hero (۶۰٪ ارتفاع صفحه) ───────── */}
       <section className="relative h-[60vh] w-full overflow-hidden bg-navy flex items-center justify-center">
-        {/* Placeholder — بعداً عکس واقعی جایگزین کن */}
+        {/* بعداً عکس واقعی جایگزین کن */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/90 to-primary/20" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
@@ -30,7 +29,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ───────── توضیحات شرکت ───────── */}
       <section className="max-w-4xl mx-auto px-6 py-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,11 +52,9 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* ───────── معرفی رئیس شرکت ───────── */}
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-          {/* عکس Placeholder */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}

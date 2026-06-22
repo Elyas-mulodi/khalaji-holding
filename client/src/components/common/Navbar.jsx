@@ -53,7 +53,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* نوار شماره‌ها — فقط موبایل، بالای navbar */}
       <div
         className={`lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-center gap-4 py-1.5 text-xs transition-colors duration-500 ${
           scrolled ? "bg-white/95 backdrop-blur-md" : "bg-white/80 backdrop-blur-md"
@@ -65,7 +64,7 @@ export default function Navbar() {
             <button
               key={phone.label}
               onClick={() => handleCopyPhone(phone.number, index)}
-              className="flex items-center gap-1.5 text-navy"
+              className="flex items-center gap-1.5 text-black"
             >
               <span className="text-[10px] opacity-70">{phone.label}:</span>
               <span dir="ltr" className="font-semibold">
@@ -97,7 +96,7 @@ export default function Navbar() {
                   className={`relative inline-block text-md font-medium transition-colors duration-300 group ${
                     pathname === link.path
                       ? "text-primary"
-                      : "text-navy hover:text-primary"
+                      : "text-black hover:text-primary"
                   }`}
                 >
                   {link.title}
@@ -131,7 +130,7 @@ export default function Navbar() {
                     ) : (
                       <Icon
                         size={15}
-                        className="text-navy group-hover:text-white transition-colors duration-300"
+                        className="text-black transition-colors duration-300"
                       />
                     )}
                   </span>
@@ -141,7 +140,7 @@ export default function Navbar() {
                     </span>
                     <span
                       dir="ltr"
-                      className="text-sm font-semibold transition-colors duration-300 text-navy group-hover:text-primary"
+                      className="text-sm font-semibold transition-colors duration-300 text-black group-hover:text-primary"
                     >
                       {phone.number}
                     </span>
@@ -209,7 +208,7 @@ export default function Navbar() {
                 <Link
                   to={link.path}
                   className={`text-2xl font-medium transition-colors ${
-                    pathname === link.path ? "text-primary" : "text-navy"
+                    pathname === link.path ? "text-primary" : "text-black"
                   }`}
                 >
                   {link.title}
@@ -250,7 +249,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-navy/95 backdrop-blur-sm flex items-start justify-center pt-32"
+            className="fixed inset-0 z-[60] bg-black backdrop-blur-sm flex items-start justify-center pt-32"
             onClick={() => setSearchOpen(false)}
           >
             <motion.form

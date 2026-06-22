@@ -1,17 +1,25 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
+
+@theme {
+  --color-primary: #e8956d;
+  --color-navy: #1b2a4a;
+  --color-light: #f8f6f3;
+  --color-gray: #6b7280;
+  --color-border: #e5ddd5;
+}
 
 :root {
-  --primary: #E8956D;
-  --navy: #1B2A4A;
-  --light: #F8F6F3;
-  --white: #FFFFFF;
-  --gray: #6B7280;
-  --border: #E5DDD5;
+  --primary: #e8956d;
+  --navy: #1b2a4a;
+  --light: #f8f6f3;
+  --white: #ffffff;
+  --gray: #6b7280;
+  --border: #e5ddd5;
 }
 
 * {
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: "Vazirmatn", sans-serif;
 }
 
 body {
@@ -19,10 +27,19 @@ body {
   color: var(--navy);
   direction: rtl;
 }
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
 }
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--light); }
-::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}

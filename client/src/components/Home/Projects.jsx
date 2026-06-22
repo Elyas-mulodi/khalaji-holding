@@ -10,7 +10,7 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await getProjects();
+        const res = await getProjects({ ongoing: false });
         setProjects(res.data.data);
       } catch (err) {
         console.log(err);
@@ -37,12 +37,11 @@ export default function Projects() {
       {/* header */}
       <div className="text-center mb-16">
         <h2 className="text-2xl md:text-4xl lg:text-6xl mb-6">پروژه‌ها</h2>
-        <p className="opacity-70 max-w-xl mx-auto">
+        <p className="opacity-70 max-w-xl mx-auto text-primary">
           جدیدترین کارهای ما را بررسی کنید
         </p>
       </div>
 
-      {/* grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
         {loading
           ? Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
@@ -54,7 +53,6 @@ export default function Projects() {
                 transition={{ delay: index * 0.05 }}
                 className="group"
               >
-                {/* کلیک روی عکس → جزئیات پروژه */}
                 <Link to={`/projects/${project.slug}`}>
                   <div className="relative overflow-hidden rounded-xl h-96">
                     <img
@@ -69,18 +67,16 @@ export default function Projects() {
                 </Link>
 
                 <div className="mt-4">
-                  {/* کلیک روی تایتل → جزئیات پروژه */}
                   <Link to={`/projects/${project.slug}`}>
                     <h3 className="text-lg font-medium text-black hover:text-primary transition-colors">
                       {project.title}
                     </h3>
                   </Link>
 
-                  {/* کلیک روی نام کتگوری → صفحه کتگوری */}
                   {project.category && (
                     <Link
                       to={`/categories/${project.category.slug}`}
-                      className="text-sm text-gray-500 hover:text-primary transition-colors inline-block"
+                      className="text-sm text-primary hover:text-gray-400 transition-colors inline-block"
                     >
                       {project.category.name}
                     </Link>
@@ -89,6 +85,16 @@ export default function Projects() {
               </motion.div>
             ))}
       </div>
+      {!loading && (
+        <div className="flex justify-center mt-16">
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-3 border border-navy text-navy text-sm font-medium px-10 py-3 hover:bg-navy hover:text-white transition-all duration-300 group"
+          >
+            مشاهده همه پروژه‌ها
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

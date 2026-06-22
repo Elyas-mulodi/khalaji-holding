@@ -6,9 +6,6 @@ import { getProject } from "../services/api";
 
 const BASE_URL = import.meta.env.VITE_API_URL?.replace("/api", "");
 
-// ─────────────────────────────────────────
-// کامپوننت تصویر با fallback اسکلتون
-// ─────────────────────────────────────────
 function ProjectImage({ src, alt, className }) {
   const [error, setError] = useState(false);
 
@@ -139,7 +136,28 @@ export default function ProjectDetail() {
         </div>
       </motion.div>
 
-      {/* عکس اصلی */}
+      {project.ongoing && (
+        <div className="mt-8 p-6 border border-border rounded-xl">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-sm font-medium text-navy">در حال اجرا</span>
+          </div>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs text-gray">پیشرفت پروژه</span>
+            <span className="text-xs font-medium text-primary">
+              {project.progress}٪
+            </span>
+          </div>
+          <div className="w-full h-2 bg-border rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${project.progress}%` }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="h-full bg-primary rounded-full"
+            />
+          </div>
+        </div>
+      )}
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -153,7 +171,6 @@ export default function ProjectDetail() {
         />
       </motion.div>
 
-      {/* بقیه عکس‌ها */}
       {project.images?.length > 1 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
           {project.images.slice(1).map((img, i) => (
@@ -175,7 +192,6 @@ export default function ProjectDetail() {
         </div>
       )}
 
-      {/* پروژه‌های مرتبط */}
       {project.relatedProjects?.length > 0 && (
         <div className="border-t border-border pt-16">
           <h2 className="text-2xl md:text-3xl font-bold text-navy mb-10">

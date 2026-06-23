@@ -7,7 +7,7 @@ import logo from "../../assets/logo-transformed.png";
 const navLinks = [
   { title: "خانه", path: "/" },
   { title: "پروژه‌ها", path: "/projects" },
-  { title:"دسته بندی ها" ,path :"/category"},
+  { title:"دسته بندی ها" ,path :"/categories"},
   { title: "درباره ما", path: "/about" },
 ];
 
@@ -80,7 +80,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-7 lg:top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md ${
-          scrolled ? "bg-white/95 shadow-sm py-3" : "bg-white/10 py-6"
+          scrolled ? "bg-white/95 shadow-sm py-2" : "bg-white/10 py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -249,7 +249,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black backdrop-blur-sm flex items-start justify-center pt-32"
+            className="fixed inset-0 z-[60] backdrop-blur-sm flex items-start justify-center pt-32"
             onClick={() => setSearchOpen(false)}
           >
             <motion.form

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "+۱۵۰", label: "پروژه تکمیل‌شده" },
-  { value: "+۱۲", label: "سال تجربه" },
+  { value: "+200", label: "پروژه تکمیل‌شده" },
+  { value: "+15", label: "سال تجربه" },
   { value: "۹۸٪", label: "رضایت مشتری" },
 ];
 

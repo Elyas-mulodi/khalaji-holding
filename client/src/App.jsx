@@ -21,6 +21,7 @@ import AdminProjects from "./admin/pages/Projects";
 import AdminCategories from "./admin/pages/Categories";
 import AdminSlider from "./admin/pages/Slider";
 import PublicLayout from "./layouts/PublicLayout";
+import Catalogs from "./pages/Catalogs";
 
 export default function App() {
   return (
@@ -44,6 +45,8 @@ export default function App() {
             <Route path="/categories/:slug" element={<CategoryProjects />} />
 
             <Route path="/about" element={<About />} />
+
+            <Route path="/catalogs" element={<Catalogs />} />
 
             <Route path="/search" element={<SearchResults />} />
           </Route>

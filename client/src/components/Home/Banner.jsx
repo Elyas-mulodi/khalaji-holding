@@ -26,7 +26,7 @@ const info = [
 
 export default function Banner() {
   return (
-    <section className="bg-navy py-24 px-6">
+    <section className="bg-navy py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: 40 }}
@@ -35,13 +35,13 @@ export default function Banner() {
           transition={{ duration: 0.7 }}
         >
           <span className="text-primary text-xs tracking-widest font-medium uppercase">
-            درباره خلاجی هولدینگ
+            درباره خلجی هولدینگ
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-6 leading-tight">
             بیش از یک دهه تجربه در صنعت ساختمان
           </h2>
           <p className="text-white/60 leading-8 text-sm md:text-base mb-10">
-            خلاجی هولدینگ با تکیه بر دانش فنی و تجربه اجرایی، خدماتی شامل
+            خلجی هولدینگ با تکیه بر دانش فنی و تجربه اجرایی، خدماتی شامل
             اپوکسی، عایق‌بندی، نما و پروژه‌های ساختمانی را با بالاترین
             استانداردهای کیفی ارائه می‌دهد.
           </p>

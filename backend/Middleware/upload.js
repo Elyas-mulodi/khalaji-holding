@@ -7,10 +7,14 @@ import path from "path";
 const combinedStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     if (file.fieldname === "images") cb(null, "uploads/images/");
-    else if (file.fieldname === "catalog") cb(null, "uploads/catalogs/");
+    else if (file.fieldname === "catalogFile") cb(null, "uploads/catalogs/");
     else cb(null, "uploads/images/");
   },
-  filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const filename = `${Date.now()}${ext}`;
+    cb(null, filename);
+  },
 });
 
 // ─────────────────────────────────────────
@@ -18,7 +22,11 @@ const combinedStorage = multer.diskStorage({
 // ─────────────────────────────────────────
 const imageStorage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "uploads/images/"),
-  filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const filename = `${Date.now()}${ext}`;
+    cb(null, filename);
+  },
 });
 
 // ─────────────────────────────────────────
@@ -29,7 +37,7 @@ const combinedFilter = (req, file, cb) => {
     file.mimetype.startsWith("image/")
       ? cb(null, true)
       : cb(new Error("فقط فایل تصویری مجاز است"), false);
-  } else if (file.fieldname === "catalog") {
+  } else if (file.fieldname === "catalogFile") {
     file.mimetype === "application/pdf"
       ? cb(null, true)
       : cb(new Error("فقط فایل PDF مجاز است"), false);
@@ -55,10 +63,10 @@ const imageFilter = (req, file, cb) => {
 export const uploadProjectFiles = multer({
   storage: combinedStorage,
   fileFilter: combinedFilter,
-  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
+  limits: { fileSize: 20 * 1024 * 1024 },
 }).fields([
   { name: "images", maxCount: 10 },
-  { name: "catalog", maxCount: 1 },
+  { name: "catalogFile", maxCount: 1 },
 ]);
 
 // برای category — چند عکس

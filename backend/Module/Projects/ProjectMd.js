@@ -32,18 +32,6 @@ const projectSchema = new mongoose.Schema(
       lowercase: true,
     },
     images: [String],
-    catalogFile: {
-      type: String,
-      default: null,
-    },
-    catalogTitle: {
-      type: String,
-      default: null,
-    },
-    catalogDescription: {
-      type: String,
-      default: null,
-    },
     ongoing: {
       type: Boolean,
       default: false,

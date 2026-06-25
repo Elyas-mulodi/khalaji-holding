@@ -113,7 +113,7 @@ export default function Projects() {
           پروژه‌های ما
         </h1>
         <p className="text-gray max-w-xl leading-7">
-          مجموعه کامل پروژه‌های اجراشده توسط خلاجی هولدینگ
+          مجموعه کامل پروژه‌های اجراشده توسط خلجی هولدینگ
         </p>
       </motion.div>
 
@@ -146,7 +146,6 @@ export default function Projects() {
           </div>
         )}
 
-        {/* ردیف ۲ — ساب‌کتگوری‌ها (فقط اگه کتگوری انتخاب شده باشه) */}
         <AnimatePresence>
           {activeCategory?.subCategories?.length > 0 && (
             <motion.div
@@ -173,7 +172,6 @@ export default function Projects() {
           )}
         </AnimatePresence>
 
-        {/* ردیف ۳ — وضعیت + پاک کردن فیلتر */}
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs text-gray ml-2">وضعیت:</span>
           <button
@@ -197,7 +195,6 @@ export default function Projects() {
             در حال اجرا
           </button>
 
-          {/* دکمه پاک کردن فیلتر */}
           <AnimatePresence>
             {hasFilter && (
               <motion.button
@@ -215,7 +212,6 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* ─── گرید پروژه‌ها ─── */}
       <AnimatePresence mode="wait">
         {loadingProjects ? (
           <motion.div

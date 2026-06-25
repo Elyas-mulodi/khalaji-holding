@@ -33,7 +33,7 @@ export default function Projects() {
   );
 
   return (
-    <section className="min-h-screen w-full px-20 py-20">
+    <section className="min-h-screen w-full px-10 py-20">
       {/* header */}
       <div className="text-center mb-16">
         <h2 className="text-2xl md:text-4xl lg:text-6xl mb-6">پروژه‌ها</h2>

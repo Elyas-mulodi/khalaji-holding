@@ -30,8 +30,6 @@ export const getProjects = async (req, res) => {
         { title: searchRegex },
         { description: searchRegex },
         { location: searchRegex },
-        { catalogTitle: searchRegex },
-        { catalogDescription: searchRegex },
       ];
     }
 
@@ -81,8 +79,6 @@ export const getProject = async (req, res) => {
       });
     }
 
-    console.log("RELATED:", project.relatedProjects);
-
     res.status(200).json({
       success: true,
       data: project,
@@ -108,8 +104,6 @@ export const createProject = async (req, res) => {
       order,
       slug,
       relatedProjects,
-      catalogTitle,
-      catalogDescription,
     } = req.body;
 
     let relatedProjectsParsed = [];
@@ -129,19 +123,12 @@ export const createProject = async (req, res) => {
       ? req.files.images.map((file) => file.path.replace(/\\/g, "/"))
       : [];
 
-    const catalogFile = req.files?.catalogFile
-      ? req.files.catalogFile[0].path.replace(/\\/g, "/")
-      : null;
-
     const project = await Project.create({
       title,
       category,
       description,
       location,
       yearBuilt,
-      catalogTitle,
-      catalogDescription,
-      catalogFile,
       slug,
       images,
       relatedProjects: relatedProjectsParsed,
@@ -149,7 +136,7 @@ export const createProject = async (req, res) => {
       progress: progress || 0,
       completedAt: completedAt || null,
       features: features === "true",
-      order: order || 0,
+      orders: order || 0,
     });
     res.status(201).json({
       success: true,
@@ -182,19 +169,12 @@ export const updateProject = async (req, res) => {
       updateData.images = [...project.images, ...newImages];
     }
 
-    if (req.files?.catalogFile) {
-      if (project.catalogFile) {
-        const fullPath = path.join(__dirname, project.catalogFile);
-        if (fs.existsSync(fullPath)) fs.unlinkSync(fullPath);
-      }
-      updateData.catalogFile = req.files.catalogFile[0].path.replace(
-        /\\/g,
-        "/",
-      );
-    }
-
     if (updateData.relatedProjects) {
       updateData.relatedProjects = JSON.parse(updateData.relatedProjects);
+    }
+
+    if (updateData.subCategory === "") {
+      updateData.subCategory = null;
     }
 
     if (updateData.ongoing !== undefined) {
@@ -231,17 +211,10 @@ export const deleteProject = async (req, res) => {
       });
     }
 
-    // حذف عکس‌ها از سرور
     project.images.forEach((imgPath) => {
       const fullPath = path.join(__dirname, imgPath);
       if (fs.existsSync(fullPath)) fs.unlinkSync(fullPath);
     });
-
-    // حذف کاتالوگ از سرور
-    if (project.catalogFile) {
-      const fullPath = path.join(__dirname, project.catalogFile);
-      if (fs.existsSync(fullPath)) fs.unlinkSync(fullPath);
-    }
 
     await project.deleteOne();
 

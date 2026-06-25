@@ -45,7 +45,7 @@ export default function AdminLogin() {
             className="h-20 w-auto mx-auto mb-4"
           />
           <h1 className="text-2xl font-bold text-navy">پنل مدیریت</h1>
-          <p className="text-gray text-sm mt-1">خلاجی هولدینگ</p>
+          <p className="text-gray text-sm mt-1">خلجی هولدینگ</p>
         </div>
 
         {/* فرم */}

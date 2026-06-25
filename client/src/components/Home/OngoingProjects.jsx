@@ -134,7 +134,7 @@ export default function OngoingProjects() {
 
       <div className="flex justify-center mt-12 md:hidden">
         <Link
-          to="/ongoing"
+          to="/projects"
           className="inline-flex items-center gap-2 border border-navy text-navy text-sm font-medium px-8 py-3 hover:bg-navy hover:text-white transition-all duration-300"
         >
           مشاهده همه پروژه‌های جاری

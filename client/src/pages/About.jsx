@@ -8,7 +8,7 @@ const stats = [
 
 export default function About() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <section className="relative h-[60vh] w-full overflow-hidden bg-navy flex items-center justify-center">
         {/* بعداً عکس واقعی جایگزین کن */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/90 to-primary/20" />
@@ -29,7 +29,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-24 text-center">
+      <section className="max-w-4xl mx-auto px-6 py-24 text-center overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

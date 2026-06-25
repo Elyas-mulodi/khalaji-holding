@@ -7,8 +7,9 @@ import logo from "../../assets/logo-transformed.png";
 const navLinks = [
   { title: "خانه", path: "/" },
   { title: "پروژه‌ها", path: "/projects" },
-  { title:"دسته بندی ها" ,path :"/categories"},
+  { title: "دسته بندی ها", path: "/categories" },
   { title: "درباره ما", path: "/about" },
+  { title: "کاتالوگ ها", path: "/catalogs" },
 ];
 
 const PHONES = [
@@ -55,7 +56,9 @@ export default function Navbar() {
     <>
       <div
         className={`lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-center gap-4 py-1.5 text-xs transition-colors duration-500 ${
-          scrolled ? "bg-white/95 backdrop-blur-md" : "bg-white/80 backdrop-blur-md"
+          scrolled
+            ? "bg-white/95 backdrop-blur-md"
+            : "bg-white/80 backdrop-blur-md"
         }`}
       >
         {PHONES.map((phone, index) => {
@@ -265,7 +268,7 @@ export default function Navbar() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="جستجوی پروژه یا دسته‌بندی..."
-                  className="w-full bg-transparent border-b-2 border-primary text-black text-xl py-3 px-2 outline-none placeholder:text-black/50"
+                  className="w-full bg-transparent border-b-2 border-primary text-white text-xl py-3 px-2 outline-none placeholder:text-white"
                 />
                 <Search
                   className="absolute left-2 top-1/2 -translate-y-1/2 text-primary"

@@ -1,7 +1,7 @@
 import express from "express";
 
 import { protect } from "../../Middleware/authMiddleware.js";
-import { uploadMultipleImages } from "../../middleware/upload.js";
+import { uploadMultipleImages } from "../../Middleware/upload.js";
 import {
   addSubCategory,
   createCategory,

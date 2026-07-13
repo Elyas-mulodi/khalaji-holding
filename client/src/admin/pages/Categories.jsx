@@ -17,7 +17,6 @@ import {
   adminDeleteCategory,
 } from "../../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
 const emptyForm = {
   name: "",
@@ -218,7 +217,7 @@ export default function AdminCategories() {
                 <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100 shrink-0">
                   {cat.images?.[0] ? (
                     <img
-                      src={`${BASE_URL}/${cat.images[0]}`}
+                      src={`${import.meta.env.VITE_API_IMAGE_URL}${cat.images[0]}`}
                       alt={cat.name}
                       className="w-full h-full object-cover"
                     />

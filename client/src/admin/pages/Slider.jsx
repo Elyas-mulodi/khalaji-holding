@@ -9,7 +9,6 @@ import {
   adminDeleteSlider,
 } from "../../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
 const emptyForm = {
   title: "",
@@ -153,7 +152,7 @@ export default function AdminSlider() {
               <div className="relative h-48 overflow-hidden bg-gray-100">
                 {slider.image ? (
                   <img
-                    src={`${BASE_URL}/${slider.image}`}
+                    src={`${import.meta.env.VITE_API_IMAGE_URL}${slider.image}`}
                     alt={slider.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

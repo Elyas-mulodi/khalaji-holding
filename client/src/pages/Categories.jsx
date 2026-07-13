@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ImageOff } from "lucide-react";
 import { getCategories } from "../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
 function SafeImage({ src, alt, className }) {
   const [error, setError] = useState(false);
@@ -160,7 +159,7 @@ export default function Categories() {
                       <SafeImage
                         src={
                           cat.images?.[0]
-                            ? `${BASE_URL}/${cat.images[0]}`
+                            ? `${import.meta.env.VITE_API_IMAGE_URL}${cat.images[0]}`
                             : null
                         }
                         alt={cat.name}

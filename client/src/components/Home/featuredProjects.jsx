@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ImageOff } from "lucide-react";
 import { getCategories, getProjects } from "../../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
 function SafeImage({ src, alt, className }) {
   const [error, setError] = useState(false);
@@ -194,7 +193,7 @@ export default function FeaturedProjects() {
                     <Link to={`/projects/${project.slug}`}>
                       <div className="overflow-hidden rounded-xl h-72 mb-4">
                         <SafeImage
-                          src={project.images?.[0] ? `${BASE_URL}/${project.images[0]}` : null}
+                          src={project.images?.[0] ? `${import.meta.env.VITE_API_IMAGE_URL}${project.images[0]}` : null}
                           alt={project.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />

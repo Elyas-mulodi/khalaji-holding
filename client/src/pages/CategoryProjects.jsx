@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ImageOff, ArrowRight } from "lucide-react";
 import { getCategory, getCategoryProjects } from "../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
 function SafeImage({ src, alt, className }) {
   const [error, setError] = useState(false);
@@ -88,7 +87,7 @@ export default function CategoryProjects() {
       {/* هدر با عکس */}
       <div className="relative h-[40vh] w-full overflow-hidden mb-16">
         <SafeImage
-          src={category.images?.[0] ? `${BASE_URL}/${category.images[0]}` : null}
+          src={category.images?.[0] ? `${import.meta.env.VITE_API_IMAGE_URL}${category.images[0]}` : null}
           alt={category.name}
           className="w-full h-full object-cover"
         />
@@ -226,7 +225,7 @@ export default function CategoryProjects() {
                   <Link to={`/projects/${project.slug}`}>
                     <div className="relative overflow-hidden rounded-xl h-72 mb-4">
                       <SafeImage
-                        src={project.images?.[0] ? `${BASE_URL}/${project.images[0]}` : null}
+                        src={project.images?.[0] ? `${import.meta.env.VITE_API_IMAGE_URL}${project.images[0]}` : null}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />

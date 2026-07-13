@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Calendar, FileText, ImageOff } from "lucide-react";
 import { getProject } from "../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL?.replace("/api", "");
 
 function ProjectImage({ src, alt, className }) {
   const [error, setError] = useState(false);
@@ -125,7 +124,7 @@ export default function ProjectDetail() {
                 کاتالوگ
               </span>
               <a
-                href={`${BASE_URL}/${project.catalogFile}`}
+                href={`${import.meta.env.VITE_API_IMAGE_URL}${project.catalogFile}`}
                 download
                 className="text-primary font-medium hover:underline"
               >
@@ -165,7 +164,7 @@ export default function ProjectDetail() {
         className="w-full h-[60vh] md:h-[75vh] overflow-hidden rounded-xl mb-6"
       >
         <ProjectImage
-          src={project.images?.[0] ? `${BASE_URL}/${project.images[0]}` : null}
+          src={project.images?.[0] ? `${import.meta.env.VITE_API_IMAGE_URL}${project.images[0]}` : null}
           alt={project.title}
           className="w-full h-full object-cover"
         />
@@ -183,7 +182,7 @@ export default function ProjectDetail() {
               className="overflow-hidden rounded-xl h-80"
             >
               <ProjectImage
-                src={`${BASE_URL}/${img}`}
+                src={`${import.meta.env.VITE_API_IMAGE_URL}${img}`}
                 alt={`${project.title} ${i + 2}`}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
@@ -212,7 +211,7 @@ export default function ProjectDetail() {
                   <div className="overflow-hidden rounded-xl h-72 mb-4">
                     <ProjectImage
                       src={
-                        rp.images?.[0] ? `${BASE_URL}/${rp.images[0]}` : null
+                        rp.images?.[0] ? `${import.meta.env.VITE_API_IMAGE_URL}${rp.images[0]}` : null
                       }
                       alt={rp.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"

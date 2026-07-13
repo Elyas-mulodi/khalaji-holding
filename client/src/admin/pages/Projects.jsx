@@ -18,7 +18,6 @@ import {
   adminDeleteProject,
 } from "../../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
 const emptyForm = {
   title: "",
@@ -207,7 +206,7 @@ export default function AdminProjects() {
                     <div className="w-10 h-10 rounded-lg overflow-hidden bg-gray-100">
                       {project.images?.[0] ? (
                         <img
-                          src={`${BASE_URL}/${project.images[0]}`}
+                          src={`${import.meta.env.VITE_API_IMAGE_URL}${project.images[0]}`}
                           alt={project.title}
                           className="w-full h-full object-cover"
                         />

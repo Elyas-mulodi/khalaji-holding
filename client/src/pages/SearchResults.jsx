@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ImageOff, Search } from "lucide-react";
 import { search } from "../services/api";
 
-const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
 function SafeImage({ src, alt, className }) {
   const [error, setError] = useState(false);
@@ -108,7 +107,7 @@ export default function SearchResults() {
                     <Link to={`/projects/${project.slug}`}>
                       <div className="overflow-hidden rounded-xl h-56 mb-3">
                         <SafeImage
-                          src={project.images?.[0] ? `${BASE_URL}/${project.images[0]}` : null}
+                          src={project.images?.[0] ? `${import.meta.env.VITE_API_IMAGE_URL}${project.images[0]}` : null}
                           alt={project.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />
@@ -154,7 +153,7 @@ export default function SearchResults() {
                     >
                       <div className="w-16 h-16 overflow-hidden rounded-lg shrink-0">
                         <SafeImage
-                          src={cat.images?.[0] ? `${BASE_URL}/${cat.images[0]}` : null}
+                          src={cat.images?.[0] ? `${import.meta.env.VITE_API_IMAGE_URL}${cat.images[0]}` : null}
                           alt={cat.name}
                           className="w-full h-full object-cover"
                         />

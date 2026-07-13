@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { loginAdmin } from "../../services/api";
-import logo from "../../assets/logo-transformed.png";
+import logo from "/assets/logo-transformed.png";
 
 export default function AdminLogin() {
   const [form, setForm] = useState({ username: "", password: "" });

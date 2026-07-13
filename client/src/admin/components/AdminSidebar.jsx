@@ -9,7 +9,7 @@ import {
   X,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import logo from "../../assets/logo-transformed.png";
+import logo from "/assets/logo-transformed.png";
 
 const menuItems = [
   { title: "داشبورد", path: "/admin", icon: LayoutDashboard },

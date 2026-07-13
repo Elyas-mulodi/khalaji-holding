@@ -1,4 +1,4 @@
-import Slider from "./sliderMd.js";
+import Slider from "./SliderMd.js";
 import fs from "fs";
 import path from "path";
 import { __dirname } from "../../app.js";

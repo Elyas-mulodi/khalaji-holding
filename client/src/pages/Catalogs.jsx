@@ -5,33 +5,24 @@ import { FileText, Download } from "lucide-react";
 const catalogs = [
   {
     id: 1,
-    title: "کاتالوگ اپوکسی صنعتی",
-    description:
-      "مشخصات فنی کامل پوشش‌های اپوکسی صنعتی خلاجی هولدینگ، شامل انواع سیستم‌های اپوکسی، مقاومت‌ها و کاربردها",
-    category: "اپوکسی",
-    file: "/catalogs/epoxy-industrial.pdf",
-    color: "from-blue-500/20 to-blue-600/10",
-  },
-  {
-    id: 2,
-    title: "کاتالوگ پوشش نما",
+    title: "کاتالوگ پوشش پارکینگ",
     description:
       "راهنمای جامع پوشش‌های نمای ساختمان شامل میکروسمنت، میکرواستون، تکسچر و سایر محصولات نمای خلاجی",
     category: "نما",
-    file: "/catalogs/facade.pdf",
+    file: "/catalogs/parking.pdf",
     color: "from-orange-500/20 to-orange-600/10",
   },
   {
-    id: 3,
+    id: 2,
     title: "کاتالوگ عایق‌بندی",
     description:
       "معرفی کامل سیستم‌های عایق‌بندی صوتی، حرارتی و رطوبتی، شامل مشخصات فنی و روش اجرا",
     category: "عایق‌بندی",
-    file: "/catalogs/insulation.pdf",
+    file: "/catalogs/عایق.pdf",
     color: "from-green-500/20 to-green-600/10",
   },
   {
-    id: 4,
+    id: 3,
     title: "کاتالوگ ماله پروانه",
     description:
       "مشخصات اجرایی و فنی پوشش‌های ماله پروانه، ارملات و V Glass برای فضاهای داخلی و خارجی",
@@ -40,21 +31,12 @@ const catalogs = [
     color: "from-purple-500/20 to-purple-600/10",
   },
   {
-    id: 5,
-    title: "کاتالوگ ضد حریق",
-    description:
-      "معرفی سیستم‌های پوشش ضد حریق شامل رنگ پف‌کننده و ملات پلیمر سیمان ضد حریق برای سازه‌های فلزی",
-    category: "ضد حریق",
-    file: "/catalogs/fire-resistant.pdf",
-    color: "from-red-500/20 to-red-600/10",
-  },
-  {
-    id: 6,
-    title: "کاتالوگ پوشش پارکینگ",
+    id: 4,
+    title: "کاتالوگ پوشش کف",
     description:
       "راهنمای پوشش‌های تخصصی بدنه و کف پارکینگ شامل میکروسمنت، اکریلیک و تکسچر با مقاومت بالا",
     category: "پارکینگ",
-    file: "/catalogs/parking.pdf",
+    file: "/catalogs/poshesh.pdf",
     color: "from-gray-500/20 to-gray-600/10",
   },
 ];
@@ -65,7 +47,6 @@ export default function Catalogs() {
   return (
     <div className="pt-32 pb-24 px-6 max-w-7xl mx-auto">
 
-      {/* هدر */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -83,7 +64,6 @@ export default function Catalogs() {
         </p>
       </motion.div>
 
-      {/* گرید کارت‌ها */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {catalogs.map((catalog, i) => (
           <motion.div
@@ -103,22 +83,18 @@ export default function Catalogs() {
           >
             <div className={`relative overflow-hidden border border-border bg-gradient-to-br ${catalog.color} p-8 h-full transition-all duration-300 group-hover:border-primary group-hover:shadow-lg`}>
 
-              {/* آیکون */}
               <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md transition-shadow">
                 <FileText size={24} className="text-primary" />
               </div>
 
-              {/* دسته‌بندی */}
               <span className="text-primary text-xs font-medium tracking-wide">
                 {catalog.category}
               </span>
 
-              {/* عنوان */}
               <h3 className="text-lg font-bold text-navy mt-2 mb-3 leading-tight">
                 {catalog.title}
               </h3>
 
-              {/* توضیحات — با hover میاد */}
               <AnimatePresence>
                 {hoveredId === catalog.id && (
                   <motion.p
@@ -133,7 +109,6 @@ export default function Catalogs() {
                 )}
               </AnimatePresence>
 
-              {/* دکمه دانلود */}
               <div className={`flex items-center gap-2 mt-6 text-sm font-medium transition-colors duration-300 ${
                 hoveredId === catalog.id ? "text-primary" : "text-gray"
               }`}>
@@ -141,7 +116,6 @@ export default function Catalogs() {
                 دانلود PDF
               </div>
 
-              {/* خط تزئینی پایین */}
               <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-primary transition-transform duration-300 origin-right ${
                 hoveredId === catalog.id ? "scale-x-100" : "scale-x-0"
               }`} />

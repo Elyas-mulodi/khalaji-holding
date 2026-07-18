@@ -60,7 +60,7 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <img
-            src={`${import.meta.env.VITE_API_URL.replace("/api", "")}/${slide.image}`}
+            src={`${import.meta.env.VITE_API_IMAGE_URL}${slide.image}`}
             alt={slide.title}
             className="w-full h-full object-cover brightness-85
                  contrast-110
@@ -97,7 +97,6 @@ export default function Hero() {
           > */}
 
         <div className="flex items-center justify-center gap-5 mb-6">
-
           <h1
             className="
           text-3xl 
@@ -109,7 +108,7 @@ export default function Hero() {
           mb-2
         "
           >
-            KHALAJI  HOLDING
+            KHALAJI HOLDING
           </h1>
         </div>
         {slide.description && (

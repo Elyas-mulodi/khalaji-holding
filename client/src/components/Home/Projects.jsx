@@ -56,9 +56,7 @@ export default function Projects() {
                 <Link to={`/projects/${project.slug}`}>
                   <div className="relative overflow-hidden rounded-xl h-96">
                     <img
-                      src={`${import.meta.env.VITE_API_URL.replace("/api", "")}/${
-                        project.images?.[0]
-                      }`}
+                      src={`${import.meta.env.VITE_API_IMAGE_URL}${project.images?.[0]}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       alt={project.title}
                     />

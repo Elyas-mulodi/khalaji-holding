@@ -15,12 +15,17 @@ const info = [
     value: "0915-356-4421",
     href: "tel:09153564421",
   },
-  { icon: MapPin, label: "آدرس", value: "تهران، ایران", href: null },
+  {
+    icon: MapPin,
+    label: "آدرس",
+    value: "مشهد - بلوار وکیل اباد - هنرستان",
+    href: null,
+  },
   {
     icon: Mail,
-    label: "ایمیل",
-    value: "info@khalaji.ir",
-    href: "mailto:info@khalaji.ir",
+    label: "اینستاگرام",
+    value: "@holding_khalaji_mhd",
+    href: "https://instagram.com/holding_khalaji_mhd"
   },
 ];
 
@@ -41,9 +46,9 @@ export default function Banner() {
             بیش از یک دهه تجربه در صنعت ساختمان
           </h2>
           <p className="text-white/60 leading-8 text-sm md:text-base mb-10">
-            خلجی هولدینگ با تکیه بر دانش فنی و تجربه اجرایی، خدماتی شامل
-            اپوکسی، عایق‌بندی، نما و پروژه‌های ساختمانی را با بالاترین
-            استانداردهای کیفی ارائه می‌دهد.
+            خلجی هولدینگ با تکیه بر دانش فنی و تجربه اجرایی، خدماتی شامل اپوکسی،
+            عایق‌بندی، نما و پروژه‌های ساختمانی را با بالاترین استانداردهای کیفی
+            ارائه می‌دهد.
           </p>
           <Link
             to="/about"

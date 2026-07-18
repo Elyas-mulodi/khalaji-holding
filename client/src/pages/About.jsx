@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
+import ceoImage from "/assets/khalaj.jpg";
 
 const stats = [
   { value: "+200", label: "پروژه تکمیل‌شده" },
   { value: "+15", label: "سال تجربه" },
-  { value: "۹۸٪", label: "رضایت مشتری" },
+  { value: "98٪", label: "رضایت مشتری" },
 ];
 
 export default function About() {
   return (
     <div className="overflow-hidden">
       <section className="relative h-[60vh] w-full overflow-hidden bg-navy flex items-center justify-center">
-        {/* بعداً عکس واقعی جایگزین کن */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/90 to-primary/20" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
@@ -45,16 +45,15 @@ export default function About() {
           <p className="text-gray leading-8 text-base md:text-lg">
             خلجی هولدینگ با بیش از یک دهه تجربه در صنعت ساختمان، خدماتی شامل
             اجرای اپوکسی، عایق‌بندی، نما و پروژه‌های ساختمانی را با بالاترین
-            استانداردهای کیفی ارائه می‌دهد. هر پروژه برای ما فرصتی است برای
-            خلق ارزشی ماندگار؛ از کارخانه‌های صنعتی گرفته تا فضاهای مسکونی و
-            تجاری، تیم ما با دقت و تعهد در کنار مشتریان خود است.
+            استانداردهای کیفی ارائه می‌دهد. هر پروژه برای ما فرصتی است برای خلق
+            ارزشی ماندگار؛ از کارخانه‌های صنعتی گرفته تا فضاهای مسکونی و تجاری،
+            تیم ما با دقت و تعهد در کنار مشتریان خود است.
           </p>
         </motion.div>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -62,12 +61,13 @@ export default function About() {
             transition={{ duration: 0.7 }}
             className="order-2 md:order-1"
           >
-            <div className="w-full h-[500px] bg-gradient-to-br from-border to-light flex items-center justify-center">
-              <span className="text-gray text-sm">تصویر مدیرعامل</span>
-            </div>
+            <img
+              src={ceoImage}
+              alt="میلاد خلجی"
+              className="w-full h-[500px] object-cover object-top"
+            />
           </motion.div>
 
-          {/* متن */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -83,16 +83,15 @@ export default function About() {
             </h2>
             <p className="text-gray leading-8 mb-4">
               با بیش از یک دهه تجربه در صنعت ساختمان، رویکردی جامع به اجرای
-              پروژه‌ها داریم؛ از خدمات صنعتی گرفته تا اجرای نمای تجاری و
-              مسکونی، هر پروژه با همان دقت و تعهد انجام می‌شود.
+              پروژه‌ها داریم؛ از خدمات صنعتی گرفته تا اجرای نمای تجاری و مسکونی،
+              هر پروژه با همان دقت و تعهد انجام می‌شود.
             </p>
             <p className="text-gray leading-8 mb-10">
-              تخصص ما در استفاده از مصالح به‌روز و تکنیک‌های اجرایی پیشرفته،
-              این امکان را فراهم می‌کند که نتیجه نهایی کاملاً مطابق با
-              انتظارات مشتری باشد.
+              تخصص ما در استفاده از مصالح به‌روز و تکنیک‌های اجرایی پیشرفته، این
+              امکان را فراهم می‌کند که نتیجه نهایی کاملاً مطابق با انتظارات
+              مشتری باشد.
             </p>
 
-            {/* آمار */}
             <div className="flex flex-wrap gap-10">
               {stats.map((stat, i) => (
                 <div key={i}>

@@ -28,7 +28,6 @@ export default function CategoryProjects() {
   const [loadingProjects, setLoadingProjects] = useState(true);
   const [total, setTotal] = useState(0);
 
-  // گرفتن اطلاعات category
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -45,26 +44,26 @@ export default function CategoryProjects() {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  // گرفتن پروژه‌ها
-  useEffect(() => {
-    if (!category) return;
-    const fetchProjects = async () => {
-      setLoadingProjects(true);
-      try {
-        const params = { limit: 12 };
-        if (activeSubCategory) params.subCategory = activeSubCategory._id;
-        const res = await getCategoryProjects(slug, params);
-        setProjects(res.data.data);
-        setTotal(res.data.total);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setLoadingProjects(false);
-      }
-    };
-    fetchProjects();
-  }, [category, activeSubCategory]);
-
+useEffect(() => {
+  if (!category) return;
+  const fetchProjects = async () => {
+    setLoadingProjects(true);
+    try {
+      const params = { limit: 12 };
+      if (activeSubCategory) params.subCategory = activeSubCategory._id;
+      const res = await getCategoryProjects(slug, params);
+      console.log("projects data:", res.data.data); // ← اضافه کن
+      console.log("first project slug:", res.data.data?.[0]?.slug); // ← اضافه کن
+      setProjects(res.data.data);
+      setTotal(res.data.total);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoadingProjects(false);
+    }
+  };
+  fetchProjects();
+}, [category, activeSubCategory]);
   if (loadingCat) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -123,7 +122,6 @@ export default function CategoryProjects() {
 
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* فیلتر ساب‌کتگوری */}
         {category.subCategories?.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -161,7 +159,6 @@ export default function CategoryProjects() {
           </motion.div>
         )}
 
-        {/* توضیحات ساب‌کتگوری انتخاب‌شده */}
         <AnimatePresence mode="wait">
           {activeSubCategory?.description && (
             <motion.p
@@ -176,7 +173,6 @@ export default function CategoryProjects() {
           )}
         </AnimatePresence>
 
-        {/* گرید پروژه‌ها */}
         <AnimatePresence mode="wait">
           {loadingProjects ? (
             <motion.div
